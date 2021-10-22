@@ -45,7 +45,6 @@ app.get(family, (req,res) => {
   });
 });
 
-
 app.get("/categories/:categoryId/characters/:id", (req,res) => {
   const {categoryId, id} = req.params;
   res.json({
