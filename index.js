@@ -17,7 +17,6 @@ app.get("/characters", (req,res) => {
     phrase: "I'll become pirate king",
     reward: 1500000
   }, {
-
     categorie: "character",
     name: "Nami",
     phrase: "I'll make the world map"
@@ -51,6 +50,18 @@ app.get("/categories/:categoryId/characters/:id", (req,res) => {
     categoryId,
     id
   })
+})
+
+app.get("/users", (req, res) => {
+  const { limit, offset } = req.query;
+  if (limit && offset) {
+    res.json({
+      limit,
+      offset
+    })
+  } else {
+    res.send("Have not parameters")
+  }
 })
 
 app.listen(port,() => {
