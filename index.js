@@ -14,7 +14,8 @@ app.get("/characters", (req,res) => {
   res.json([{
     categorie: "character",
     name: "Monkey D. Luffy",
-    phrase: "I'll become pirate king"
+    phrase: "I'll become pirate king",
+    reward: 1500000
   }, {
 
     categorie: "character",
@@ -27,12 +28,11 @@ app.get("/characters", (req,res) => {
   }]);
 });
 
-const characters_phrases = "/characters/:id/phrase/:phraseId";
+const characters_phrases = "/characters/:id";
 app.get(characters_phrases, (req,res) => {
   const { id, phraseId } = req.params
   res.json({
-    id,
-    phraseId
+    id
   });
 });
 
