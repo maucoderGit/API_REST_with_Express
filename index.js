@@ -1,4 +1,6 @@
+const faker = require("faker");
 const express = require("express");
+const { image } = require("faker");
 const app = express();
 const port = 3000;
 
@@ -8,6 +10,10 @@ app.get("/", (req, res) => {
 
 app.get("/new-rute", (req,res) => {
   res.send("Hello, I'm a new rute");
+});
+
+app.get("/characters/filter", (req, res) => {
+  res.send("Yo soy un filter");
 });
 
 app.get("/characters", (req,res) => {
@@ -63,6 +69,21 @@ app.get("/users", (req, res) => {
     res.send("Have not parameters")
   }
 })
+
+
+app.get("/products", (req, res) => {
+  const products = [];
+  const { size } = req.query;
+  const limit = size || 10;
+  for(i = 0; i < limit; i++){
+    products.push({
+      name: faker.commerce.productName(),
+      price: parseInt(faker.commerce.price(), 10),
+      img: faker.image.imageUrl(),
+    })
+  };
+  res.json(products);
+});
 
 app.listen(port,() => {
   console.log("My port" + port);
