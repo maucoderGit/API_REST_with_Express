@@ -1,9 +1,9 @@
 const productsRouter = require("./products")
-const charactersRouter = require("./characters")
+const usersRouter = require("./users")
 
 function routerAPI(app){
   app.use("/products", productsRouter)
-  app.use("/characters", charactersRouter)
+  app.use("/users", usersRouter)
 }
 
 module.exports = routerAPI;
