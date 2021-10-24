@@ -2,15 +2,29 @@ const faker = require("faker");
 const express = require("express");
 const router = express.Router();
 
-router.get("/API/filter", (req, res) => {
+router.get("/filter", (req, res) => {
     res.send("Yo soy un filter");
   });
 
-router.get("/API", (req,res) => {
-
+router.get("/", (req,res) => {
+  const users = [{
+    nombre: "Juan Gonzalez",
+    id: 0000001,
+  },{
+    nombre: "Mauricio Gonzalez",
+    id: 000002,
+  },
+  {
+    nombre: "Donald Trump",
+    id: 000003,
+  }
+  ]
+  res.json({
+    users
+  })
 });
 
-const usersId = "/API/users/:id";
+const usersId = "/:id";
 router.get(usersId, (req,res) => {
   const { id } = req.params
   res.json({
@@ -19,7 +33,7 @@ router.get(usersId, (req,res) => {
   })
 });
 
-const id = "/API/:id/users/:usersId";
+const id = "/:id/users/:usersId";
 router.get(id, (req,res) => {
   const { id, userId } = req.params
   res.json({

@@ -5,7 +5,7 @@ const express = require("express");
 
 const router = express.Router();
 
-router.get("/API", (req, res) => {
+router.get("/", (req, res) => {
   const products = [];
   const { size } = req.query;
   const limit = size || 10;
@@ -17,6 +17,14 @@ router.get("/API", (req, res) => {
     }])
   };
   res.json(products);
+});
+
+router.post("/", (req, res) => {
+  const body = req.body;
+  res.json({
+    message: "created",
+    data: body
+  })
 });
 
 module.exports = router;

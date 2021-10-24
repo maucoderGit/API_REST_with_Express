@@ -12,6 +12,8 @@ app.get("/new-rute", (req,res) => {
   res.send("Hello, I'm a new rute");
 });
 
+app.use(express.json());
+
 // app.get("/categories/:categoryId/characters/:id", (req,res) => {
 //   const {categoryId, id} = req.params;
 //   res.json({
