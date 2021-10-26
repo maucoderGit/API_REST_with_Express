@@ -1,7 +1,6 @@
 // Remember: define a method to name files when you're working with others.
 
-const ProductsService = require("../services/productsServices")
-const service = new ProductsService();
+const ProductsService = require("./../services/productsServices")
 
 const express = require("express");
 const service = new ProductsService();
@@ -15,17 +14,8 @@ router.get("/", (req, res) => {
 
 router.get("/:id", (req, res) => {
   const { id } = req.params;
-  if (id === "999"){
-    res.status(404).json({
-      message: "not found"
-    })
-  } else {
-    res.json({
-      id,
-      name: "product 2",
-      price: 1000
-    })
-  }
+  const product = service.findOne(id);
+  res.json(product);
 });
 
 router.post("/", (req, res) => {
