@@ -1,21 +1,15 @@
 // Remember: define a method to name files when you're working with others.
 
-const faker = require("faker");
+const ProductsService = require("../services/productsServices")
+const service = new ProductsService();
+
 const express = require("express");
+const service = new ProductsService();
 
 const router = express.Router();
 
 router.get("/", (req, res) => {
-  const products = [];
-  const { size } = req.query;
-  const limit = size || 10;
-  for(i = 0; i < limit; i++){
-    products.push([{
-      name: faker.commerce.productName(),
-      price: parseInt(faker.commerce.price(), 10),
-      img: faker.image.imageUrl(),
-    }])
-  };
+  const products = service.find();
   res.json(products);
 });
 
